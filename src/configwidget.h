@@ -50,7 +50,7 @@ using namespace VarTypes;
 
 #define DEF_ENUM(type,name)  \
             shared_ptr<VarTypes::VarStringEnum> v_##name; \
-            type name() {if(v_##name!=NULL) return v_##name->getString();return * (new type);}
+            type name() {if(v_##name!=nullptr) return v_##name->getString();return * (new type);}
 
 #define DEF_TREE(name)  \
             shared_ptr<VarTypes::VarList> name;
