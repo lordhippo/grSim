@@ -602,9 +602,9 @@ bool inCameraFieldOfView(dReal x, dReal y, int camNum){
   }
 }
 #define CONVUNIT(x) ((int)(1000*(x)))
-SSL_WrapperPacket* SSLWorld::generatePacket(int camNum)
+RoboCup2014Legacy::Wrapper::SSL_WrapperPacket* SSLWorld::generatePacket(int camNum)
 {
-    SSL_WrapperPacket* packet = new SSL_WrapperPacket;
+    RoboCup2014Legacy::Wrapper::SSL_WrapperPacket* packet = new RoboCup2014Legacy::Wrapper::SSL_WrapperPacket;
     dReal x,y,z,dir;
     ball->getBodyPosition(x,y,z);    
     packet->mutable_detection()->set_camera_id(camNum);
@@ -617,8 +617,8 @@ SSL_WrapperPacket* SSLWorld::generatePacket(int camNum)
     dReal dev_a = cfg->noiseDeviation_angle();
     if (sendGeomCount++ % cfg->sendGeometryEvery() == 0)
     {
-        SSL_GeometryData* geom = packet->mutable_geometry();
-        SSL_GeometryFieldSize* field = geom->mutable_field();
+        RoboCup2014Legacy::Geometry::SSL_GeometryData* geom = packet->mutable_geometry();
+        RoboCup2014Legacy::Geometry::SSL_GeometryFieldSize* field = geom->mutable_field();
         field->set_line_width(CONVUNIT(cfg->Field_Line_Width()));
         field->set_field_length(CONVUNIT(cfg->Field_Length()));
         field->set_field_width(CONVUNIT(cfg->Field_Width()));
@@ -697,7 +697,7 @@ SSL_WrapperPacket* SSLWorld::generatePacket(int camNum)
 
 }
 
-SendingPacket::SendingPacket(SSL_WrapperPacket* _packet,int _t)
+SendingPacket::SendingPacket(RoboCup2014Legacy::Wrapper::SSL_WrapperPacket* _packet,int _t)
 {
     packet = _packet;
     t      = _t;
@@ -710,7 +710,7 @@ void SSLWorld::sendVisionBuffer()
       sendQueue.push_back(new SendingPacket(generatePacket(camNum),t));
     while (t - sendQueue.front()->t>=cfg->sendDelay())
     {
-        SSL_WrapperPacket *packet = sendQueue.front()->packet;
+        RoboCup2014Legacy::Wrapper::SSL_WrapperPacket *packet = sendQueue.front()->packet;
         delete sendQueue.front();
         sendQueue.pop_front();
         visionServer->send(*packet);

@@ -45,8 +45,8 @@ Copyright (C) 2011, Parsian Robotic Center (eew.aut.ac.ir/~parsian/grsim)
 class RobotsFomation;
 class SendingPacket {
     public:
-    SendingPacket(SSL_WrapperPacket* _packet,int _t);
-    SSL_WrapperPacket* packet;
+    SendingPacket(RoboCup2014Legacy::Wrapper::SSL_WrapperPacket* _packet,int _t);
+    RoboCup2014Legacy::Wrapper::SSL_WrapperPacket* packet;
     int t;
 };
 
@@ -67,7 +67,7 @@ public:
     virtual ~SSLWorld();
     void glinit();
     void step(dReal dt=-1);
-    SSL_WrapperPacket* generatePacket(int camNum);
+    RoboCup2014Legacy::Wrapper::SSL_WrapperPacket* generatePacket(int camNum);
     void sendVisionBuffer();
     ConfigWidget* cfg;
     CGraphics* g;

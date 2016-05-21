@@ -61,7 +61,7 @@ void RoboCupSSLServer::change_interface(const string & net_interface)
     _net_interface = new QNetworkInterface(QNetworkInterface::interfaceFromName(QString(net_interface.c_str())));
 }
 
-bool RoboCupSSLServer::send(const SSL_WrapperPacket & packet)
+bool RoboCupSSLServer::send(const RoboCup2014Legacy::Wrapper::SSL_WrapperPacket & packet)
 {
     QByteArray datagram;
 
@@ -86,7 +86,7 @@ bool RoboCupSSLServer::send(const SSL_WrapperPacket & packet)
 
 bool RoboCupSSLServer::send(const SSL_DetectionFrame & frame)
 {
-    SSL_WrapperPacket pkt;
+    RoboCup2014Legacy::Wrapper::SSL_WrapperPacket pkt;
     SSL_DetectionFrame * nframe = pkt.mutable_detection();
     nframe->CopyFrom(frame);
     return send(pkt);
@@ -94,8 +94,8 @@ bool RoboCupSSLServer::send(const SSL_DetectionFrame & frame)
 
 bool RoboCupSSLServer::send(const SSL_GeometryData & geometry)
 {
-    SSL_WrapperPacket pkt;
-    SSL_GeometryData * gdata = pkt.mutable_geometry();
+    RoboCup2014Legacy::Wrapper::SSL_WrapperPacket pkt;
+    RoboCup2014Legacy::Geometry::SSL_GeometryData * gdata = pkt.mutable_geometry();
     gdata->CopyFrom(geometry);
     return send(pkt);
 }

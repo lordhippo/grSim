@@ -82,7 +82,9 @@ list(APPEND libs ${PROTOBUF_LIBRARIES})
 protobuf_generate_cpp(PROTO_CPP PROTO_H
     src/proto/messages_robocup_ssl_detection.proto
     src/proto/messages_robocup_ssl_geometry.proto
+    src/proto/messages_robocup_ssl_geometry_legacy.proto
     src/proto/messages_robocup_ssl_wrapper.proto
+    src/proto/messages_robocup_ssl_wrapper_legacy.proto
     src/proto/messages_robocup_ssl_refbox_log.proto
     src/proto/grSim_Replacement.proto
     src/proto/grSim_Commands.proto

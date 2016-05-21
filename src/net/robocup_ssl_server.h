@@ -26,7 +26,7 @@
 #include <QObject>
 #include "messages_robocup_ssl_detection.pb.h"
 #include "messages_robocup_ssl_geometry.pb.h"
-#include "messages_robocup_ssl_wrapper.pb.h"
+#include "messages_robocup_ssl_wrapper_legacy.pb.h"
 using namespace std;
 
 class QUdpSocket;
@@ -44,7 +44,7 @@ public:
 
     ~RoboCupSSLServer();
 
-    bool send(const SSL_WrapperPacket & packet);
+    bool send(const RoboCup2014Legacy::Wrapper::SSL_WrapperPacket & packet);
     bool send(const SSL_DetectionFrame & frame);
     bool send(const SSL_GeometryData & geometry);
     void change_port(const quint16 &port);
