@@ -15,7 +15,7 @@ In order to compile grSim on Ubuntu 12.04+, follow the following steps:
 1. Download and install these packages:
 
 ```bash
-sudo apt-get install build-essential cmake libqt4-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev libode-dev
+sudo apt-get install build-essential cmake libqt4-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev libode-dev protobuf-compiler
 ```
 
 2. Download, Compild & Install VarTypes:
